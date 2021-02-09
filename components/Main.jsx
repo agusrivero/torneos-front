@@ -13,7 +13,7 @@ const Torneos = ({navigation, route}) => {
                     <NavigationButton onPress={()=>navigation.push('User')} text="Usuario"/>
                     <NavigationButton onPress={()=>navigation.push('JoinTournament')} text="Unirse"/>
                     <NavigationButton onPress={()=>navigation.push('CreateTournament')} text="Crear"/>
-                    <NavigationButton onPress={()=>alert('Mis Torneos')} text="Mis Torneos"/>
+                    <NavigationButton onPress={()=>navigation.push('MyTournaments')} text="Mis Torneos"/>
                 </View>
             </View>
         </View>

@@ -1,16 +1,24 @@
 import React from 'react';
 import {StyleSheet, View, Image, Text} from 'react-native';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import BackgroundImage from '../common/BackgroundImage';
 import StyledButton from '../common/StyledButton';
 import commonStyles from '../common/styles';
 
 const User = ({navigation}) => {
 
+    const config = {
+        velocityThreshold: 0.3,
+        directionalOffsetThreshold: 80
+    };
     //Este component recibe el ID del usuario y carga los datos (¿Carga desde el principio y le pasamos props o llamamos a API aqui?)
     //Tenemos que poner la funcionalidad, en un futuro, de poder cambiar el icono del jugador
 
     return(
-        <View style={commonStyles.compContainer}>
+        <GestureRecognizer 
+            style={commonStyles.compContainer}
+            onSwipeRight={()=>navigation.goBack()}
+            config={config}>
             <BackgroundImage image={require('../../assets/padel-bg.jpg')}/>
             <View style={commonStyles.mainContainer}>
                 <View style={styles.imgContainer}>
@@ -25,7 +33,7 @@ const User = ({navigation}) => {
                     <StyledButton textColor="#0B569E" color="#edff21" type="Cerrar Sesión"/>
                 </View>
             </View>
-        </View>
+        </GestureRecognizer>
     )
 }
 

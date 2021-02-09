@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
-
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import BackgroundImage from '../common/BackgroundImage';
 import StyledButton from '../common/StyledButton';
 import commonStyles from '../common/styles';
@@ -12,9 +12,11 @@ const CreateTournament = ({navigation}) => {
     const [participantes, setParticipantes] = useState([])
     const [reload, setReload] = useState(false)
 
-    useEffect(()=>{
-       
-    },[])
+
+    const config = {
+        velocityThreshold: 0.3,
+        directionalOffsetThreshold: 80
+    };
 
     const remove = (value) => { 
         participantes.splice(participantes.indexOf(value), 1)
@@ -47,7 +49,10 @@ const CreateTournament = ({navigation}) => {
     }
 
     return(
-        <View style={commonStyles.compContainer}>
+        <GestureRecognizer 
+            style={commonStyles.compContainer}
+            onSwipeRight={()=>navigation.goBack()}
+            config={config}>
             <BackgroundImage image={require('../../assets/create-padel-bg.jpg')}/>
             <View style={commonStyles.mainContainer}>
                 <View style={styles.container}>
@@ -66,10 +71,10 @@ const CreateTournament = ({navigation}) => {
                         </View>
                     </ScrollView>
                     <StyledButton textColor="#fff" color="#0B569E" type="Crear" onPress={createTorneo}/>
-                    <StyledButton textColor="#0B569E" color="#edff21" type="Atrás" onPress={()=>navigation.push('Main')}/>
+                    {/* <StyledButton textColor="#0B569E" color="#edff21" type="Atrás" onPress={()=>navigation.push('Main')}/> */}
                 </View>
             </View>
-        </View>
+        </GestureRecognizer>
     )
 }
 

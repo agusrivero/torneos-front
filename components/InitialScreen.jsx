@@ -13,7 +13,7 @@ const InitialScreen = ({navigation}) => {
                     <Text style={styles.title}>iPadel</Text>
                 </View>
                 <View style={styles.buttomContainer}>
-                    <StyledButton textColor="#0B569E" color="#fff" type="Login" onPress={()=>navigation.navigate('Main')}/>
+                    <StyledButton textColor="#0B569E" color="#fff" type="Login" onPress={()=>navigation.navigate('Login')}/>
                     <StyledButton textColor="#0B569E" color="#edff21" type="Register" onPress={()=>navigation.push('Register')}/>
                 </View>
             </View>

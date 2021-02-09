@@ -3,7 +3,7 @@ import {View, StyleSheet, TextInput} from 'react-native';
 import BackgroundImage from '../common/BackgroundImage';
 import StyledButton from '../common/StyledButton';
 import commonStyles from '../common/styles';
-
+import axios from 'axios'
 
 
 const RegisterPwd = ({route, navigation}) => {
@@ -19,7 +19,16 @@ const RegisterPwd = ({route, navigation}) => {
         if (pwd1 != '' && pwd1 === pwd2){
             // Una vez tenemos los datos del usuario, hacemos un POST a la API para crear este nuevo usuario
             // Si se crea correctamente, navegamos a Main Screen
-            alert('Usuario Creado!')
+            const data = {
+                email: email,
+                username: username,
+                password: pwd1
+            }
+            axios.post('http://127.0.0.1:8000/api/register', data)
+            .then(res => {
+                alert('Usuario Creado!')
+                navigation.navigate('InitialScreen')
+            })
         }else{
             alert('Las contraseñas no coinciden')
         }

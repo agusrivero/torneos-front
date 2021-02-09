@@ -16,7 +16,7 @@ const JoinTournament = ({navigation}) => {
         alert(tournament)
     }
     const config = {
-        velocityThreshold: 0.1,
+        velocityThreshold: 0.3,
         directionalOffsetThreshold: 80
     };
 
@@ -25,14 +25,14 @@ const JoinTournament = ({navigation}) => {
             style={commonStyles.compContainer}
             onSwipeRight={()=>navigation.goBack()}
             config={config}>
-                <BackgroundImage image={require('../../assets/padel-bg.jpg')}/>
-                <View style={commonStyles.mainContainer}>
-                    <TextInput placeholder="Introduce tu código!" style={styles.input} value={tournament} onChangeText={(text) =>{setTournament(text)}}/>
-                    <View style={styles.buttons}>
-                        <StyledButton textColor="#0B569E" color="#edff21" type="Unirse!" onPress={joinTournament}/>
-                        {/* <StyledButton textColor="#fff" color="#0B569E" type="Atrás" onPress={()=>navigation.push('Main')}/> */}
-                    </View>
+            <BackgroundImage image={require('../../assets/padel-bg.jpg')}/>
+            <View style={commonStyles.mainContainer}>
+                <TextInput placeholder="Introduce tu código!" style={styles.input} value={tournament} onChangeText={(text) =>{setTournament(text)}}/>
+                <View style={styles.buttons}>
+                    <StyledButton textColor="#0B569E" color="#edff21" type="Unirse!" onPress={joinTournament}/>
+                    {/* <StyledButton textColor="#fff" color="#0B569E" type="Atrás" onPress={()=>navigation.push('Main')}/> */}
                 </View>
+            </View>
         </GestureRecognizer>
     )
 }
